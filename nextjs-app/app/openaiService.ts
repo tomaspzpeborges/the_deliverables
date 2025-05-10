@@ -17,7 +17,7 @@ export const API_CONFIG = {
 // OpenAI prompt configuration
 export const SYSTEM_PROMPT = "You are a personal assistant that analyzes screenshots taken on a user's phone and creates tasks for a todo list out of them. Provide your analysis in JSON format.";
 
-export const USER_PROMPT = `Analyze this screenshot. The user took this screenshot on their phone because they thought it would somehow be useful to them. 
+export const USER_PROMPT = `Analyze this screenshot. The user took this screenshot on their phone because they thought it would somehow be useful to them. Generate a task for a todo list out of it.
 E.g. 
 - if the screenshot contains a book, the task that should be created is 'order BOOK_NAME', and the \`category\` should be \`books\` (because you can link to a book on Amazon).
 - if the screenshot contains a tweet with a productivity hack, create a task that suggests something the user should do to include that productivity hack in their life. The \`category\` should be \`productivity\`.
