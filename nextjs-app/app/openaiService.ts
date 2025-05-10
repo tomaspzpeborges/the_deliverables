@@ -15,7 +15,7 @@ export const API_CONFIG = {
 };
 
 // OpenAI prompt configuration
-export const SYSTEM_PROMPT = "You are a personal assistant that analyzes screenshots taken on a user's phone and creates tasks out of them. Provide your analysis in JSON format.";
+export const SYSTEM_PROMPT = "You are a personal assistant that analyzes screenshots taken on a user's phone and creates tasks for a todo list out of them. Provide your analysis in JSON format.";
 
 export const USER_PROMPT = `Analyze this screenshot. The user took this screenshot on their phone because they thought it would somehow be useful to them. 
 E.g. 
