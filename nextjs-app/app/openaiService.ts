@@ -121,9 +121,9 @@ export async function analyzeScreenshot(screenshotUrl: string): Promise<Analysis
 
     // Return structured data
     return {
-      task: analysisResult.task || "No task identified",
-      reason: analysisResult.reason || "No reason provided",
-      category: analysisResult.category || "No category provided"
+      task: analysisResult.task || "No task",
+      reason: analysisResult.reason || "No reason",
+      category: analysisResult.category || "No category"
     };
   } catch (e) {
     // Log the error and return a default response
