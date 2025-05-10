@@ -1,5 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { SupabaseClient } from "@supabase/supabase-js";
+import { analyzeScreenshot, AnalysisResult } from "@/app/openaiService";
 
 interface UserScreenshot {
 	publicUrl: string;
@@ -64,14 +65,18 @@ export async function GET(request: Request) {
 	});
 }
 
-async function generateTasksFromScreenshots(urls: string[]): Promise<any[]> {
-	// Placeholder for task generation logic
-	console.log("Generating tasks for URLs:", urls);
-	return urls.map((url, index) => ({
-		id: `task-${index + 1}`,
-		description: `Generated task for image ${url}`,
-		status: "pending",
-	}));
+async function generateTasksFromScreenshots(urls: string[]) {
+	// Process all screenshots in parallel and collect the results
+	const results = await Promise.all(
+		urls.map(async (url) => {
+			return analyzeScreenshot(url);
+		})
+	);
+	console.log("results", results);
+	// Flatten results if analyzeScreenshot returns arrays
+	const allTasks = results.flat();
+	
+	return allTasks;
 }
 
 async function getUserScreenshots(
