@@ -113,7 +113,12 @@ async function generateTasksFromScreenshots(
 			);
 			return null;
 		} else {
-			return insertionData;
+			return {
+				name: analysisResult.task,
+				description: analysisResult.reason,
+				category: analysisResult.category,
+				source_img: url,
+			};
 		}
 	});
 
