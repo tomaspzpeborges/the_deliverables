@@ -65,15 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    _requestGalleryPermission();
+    _initPermissionsAndAlbums();
     _getSyncedCount();
-    // Load albums for selection dropdown
-    PhotoManager.getAssetPathList(type: RequestType.image).then((list) {
-      setState(() {
-        _albums = list;
-        if (_albums.isNotEmpty) _selectedAlbum = _albums.first;
-      });
-    });
   }
 
 
@@ -94,13 +87,24 @@ class _MyHomePageState extends State<MyHomePage> {
     if (status.isDenied) {
       await Permission.storage.request();
     }
-    if (!mounted) return;
-    if (!(await Permission.photos.status).isGranted && 
+    if (!(await Permission.photos.status).isGranted &&
         !(await Permission.storage.status).isGranted) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Gallery access is required to sync.')),
       );
     }
+  }
+
+  /// Request gallery permission then load albums.
+  Future<void> _initPermissionsAndAlbums() async {
+    await _requestGalleryPermission();
+    final list = await PhotoManager.getAssetPathList(type: RequestType.image);
+    if (!mounted) return;
+    setState(() {
+      _albums = list;
+      if (_albums.isNotEmpty) _selectedAlbum = _albums.first;
+    });
   }
 
   Future<void> _syncGallery() async {
