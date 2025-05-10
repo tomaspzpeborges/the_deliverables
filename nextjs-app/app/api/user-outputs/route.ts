@@ -86,8 +86,12 @@ async function generateTasksFromScreenshots(
 			return null; // Handle error or skip this URL
 		}
 
-		if (data && data.name != "No task") {
-			return data;
+		if (data) {
+			if (data.name != "No task") {
+				return data;
+			}
+
+			return null;
 		}
 
 		const analysisResult = await analyzeScreenshot(url);
