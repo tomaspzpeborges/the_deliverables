@@ -46,6 +46,12 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
+  permission_handler: ^11.3.0
+  photo_manager: ^3.0.0-dev.2
+  supabase_flutter: ^1.5.0
+  google_fonts: ^6.1.0
+  lottie: ^2.7.0
+  flutter_svg: ^2.0.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -88,3 +94,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+  assets:
+    - lib/assets/supership_logo.svg
