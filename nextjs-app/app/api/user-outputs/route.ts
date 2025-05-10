@@ -86,7 +86,7 @@ async function generateTasksFromScreenshots(
 			return null; // Handle error or skip this URL
 		}
 
-		if (data) {
+		if (data && data.name != "No task") {
 			return data;
 		}
 
@@ -112,14 +112,14 @@ async function generateTasksFromScreenshots(
 				insertionError
 			);
 			return null;
-		} else {
-			return {
-				name: analysisResult.task,
-				description: analysisResult.reason,
-				category: analysisResult.category,
-				source_img: url,
-			};
 		}
+
+		return {
+			name: analysisResult.task,
+			description: analysisResult.reason,
+			category: analysisResult.category,
+			source_img: url,
+		};
 	});
 
 	const results = await Promise.all(tasksPromises);
