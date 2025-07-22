@@ -3,6 +3,9 @@
 AI app that gathers screenshots directly from your mobile phone and turns them into actionable items. 
 The user grants the app access per album. 
 
+Developed for the 5-hour AI Granola X Vercel AI hackathon
+
+
 ## Sync with your gallery with the mobile app
 <img width="1170" height="2532" alt="IMG_2438" src="https://github.com/user-attachments/assets/8caf29a4-2e00-4f07-b595-8a0f0048b7cf" />
 
